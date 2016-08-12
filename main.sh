@@ -12,7 +12,7 @@
 
 VERSION=1.0.1
 TIME="2016-08-12"
-TOOL_PATH=`pwd`
+TOOL_PATH=$(cd `dirname $0`; pwd)
 export TOOL_PATH
 MENUPATH=${TOOL_PATH}/Config            # The default menu file path
 MENUTYPE=menu                           # Menu file name suffix
