@@ -10,16 +10,16 @@
 #            M A I N             #
 #================================#
 
-VERSION=1.0.1
-TIME="2016-08-12"
+VERSION=1.0.2
+TIME="2016-10-21"
 TOOL_PATH=$(cd `dirname $0`; pwd)
 export TOOL_PATH
-MENUPATH=${TOOL_PATH}/Config            # The default menu file path
+MENUPATH=${TOOL_PATH}/sh_menu/Config            # The default menu file path
 MENUTYPE=menu                           # Menu file name suffix
 MENUFILE=$MENUPATH/TOOL.$MENUTYPE       # The default menu file
 MENUCHAR=%                              # The default menu file separator
-
-FUNTION_DIR=${TOOL_PATH}/Function
+FUNTION_DIR=sh_menu/Function
+FUNTION_DIR_S=${TOOL_PATH}/${FUNTION_DIR}
 menu=0 # The first few menu
 tree=0 # The default does not display the menu tree
 verbose=0 # The default menu tree diagram does not display with the menu information
@@ -68,11 +68,43 @@ Chkinput()
 #{{{Create_file
 Create_file()
 {
-    ls -l ${FUNTION_DIR}| grep ^- |awk '{print $NF}'>.temp
-    cat .temp |while read LINE
+    > ${MENUFILE}
+    if [[ ! -d ${FUNTION_DIR} ]]
+    then
+        echo "${FUNTION_DIR} not exist"
+        exit
+    else
+        # 清理下菜单配置目录
+        [[ ! -z ${MENUPATH} ]] && rm -rf ${MENUPATH}/*.menu
+    fi
+    find ${FUNTION_DIR} -name "*.sh" | while read SH_FILE
     do
-        echo "$LINE%${FUNTION_DIR}/${LINE}" > ${MENUFILE}
-        chmod 777 ${FUNTION_DIR}/${LINE}
+        # 17为sh_menu/Function长度
+        if [[ -n ${SH_FILE} ]]
+        then
+            #echo ${SH_FILE:17}
+            FILE_PATH=`echo ${SH_FILE:17}`
+            FILE_NAME=`basename "${FILE_PATH}"`
+            #echo ${FILE_NAME}
+            if [[ "w${FILE_NAME}" == "w${FILE_PATH}"  ]]
+            then
+                # 表示为一级菜单脚本
+                #echo "########"
+                echo "${FILE_NAME}%${FUNTION_DIR_S}/${FILE_NAME}" >> ${MENUFILE}
+                chmod 777 ${FUNTION_DIR_S}/${FILE_NAME}
+            else
+                # 需要生成二级菜单
+                # Function 目录下的目录名作为打开二级菜单的名称
+                SUB_MENU_NAME=`echo ${FILE_PATH} | awk -F / '{print $1}'`
+
+                # 将目录名称写到一级菜单中
+                echo "${SUB_MENU_NAME}%${SUB_MENU_NAME}.menu" >> ${MENUFILE}
+
+                # 将 Function 二级目录下的脚本写到二级菜单中
+                echo "${FILE_NAME}%${FUNTION_DIR_S}/${FILE_PATH}" >> ${MENUPATH}/${SUB_MENU_NAME}.menu
+                chmod +x ${FUNTION_DIR_S}/${FILE_PATH}
+            fi
+        fi
     done
     sh main.sh -t
     echo "OK"

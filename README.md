@@ -2,11 +2,38 @@
 
 自动化生成脚本目录，统一管理脚本
 
+(以下链接由 [Vim_IDE](https://github.com/BillWang139967/Vim)自动生成)
+
+
 ## usage
 
-> * 将脚本放到Funtion目录
+> * 将脚本放到 sh_menu/Funtion 目录中(注:如果放到 Funtion 中包含子目录，会以目录名作为一级菜单选项)
 > * sh main.sh -c 更新脚本目录文件
-> * sh main.sh进行使用
+> * sh main.sh 进行使用
+
+## 功能展示
+
+### 生成菜单文件
+
+![Screenshot](images/gen_menu.jpg)
+
+### 开始使用
+
+![Screenshot](images/menu.jpg)
+
+* 上图输入 1 ，即执行 ww.sh 脚本
+* 上图输入 2 ，及进入 wang 目录,程序会判断是否在子目录，如果是在子目录，会自动加回退到上级目录选项
+* 本程序仅支持二级菜单
+* 如果输入中有字符输入错误，可以输入'Ctrl + Backspace' 进行删除操作
+
+## 相关项目
+
+python 终端菜单--[py_menu](https://github.com/BillWang139967/py_menu)
+
+## 版本发布 
+----
+* v1.0.2，2016-10-21，更新: 支持自动生成二级菜单，目录结构调整
+* v1.0.1，2016-08-12，新增: 发布初始版本。
 
 ## 参加步骤
 
@@ -32,3 +59,9 @@ $ git checkout master
 $ git rebase upstream/master
 $ git push -f origin master
 ```
+## 小额捐款
+
+如果你觉得shell_menu对你有帮助, 可以对作者进行小额捐款(支付宝)
+
+![Screenshot](images/5.jpg)
+
