@@ -14,6 +14,7 @@ VERSION=1.0.2
 TIME="2016-10-21"
 TOOL_PATH=$(cd `dirname $0`; pwd)
 export TOOL_PATH
+cd  ${TOOL_PATH}
 MENUPATH=${TOOL_PATH}/sh_menu/Config            # The default menu file path
 MENUTYPE=menu                           # Menu file name suffix
 MENUFILE=$MENUPATH/TOOL.$MENUTYPE       # The default menu file
