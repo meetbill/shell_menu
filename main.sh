@@ -1,7 +1,7 @@
 #########################################################################
 # File Name: main.sh
-# Author: wangbin
-# mail: 772384788@qq.com
+# Author: 遇见王斌
+# mail: wangbin139967@163.com
 # Created Time: Tue 28 Oct 2014 05:09:26 AM CST
 #########################################################################
 #!/bin/bash
@@ -234,7 +234,6 @@ case "$input" in
          echo "-------------------------------------------------"
          echo
 	     echo -e "\033[42;37m                 version $VERSION                   \033[m"
-	     echo -e "\033[42;37m                 Time:2015-11-16                 \033[m"
          echo
          echo "    input number to open a menu/run a script"
          echo
@@ -246,9 +245,9 @@ case "$input" in
          echo "    x Exit" 
          echo
          echo "-------------------------------------------------"
-         echo -e "|   \033[44;37mAuthor :\033[0m wangbin                             |"
-         echo -e "|   \033[44;37mE-mail :\033[0m wangbin139967@163.com               |"
-         echo -e "|   \033[44;37mTime   :\033[0m ${TIME}                          |"
+         echo -e "   \033[44;37mAuthor :\033[0m 遇见王斌                             "
+         echo -e "   \033[44;37mE-mail :\033[0m wangbin139967@163.com               "
+         echo -e "   \033[44;37mTime   :\033[0m ${TIME}                          "
          echo "-------------------------------------------------"
          Enter
          ;;

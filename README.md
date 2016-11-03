@@ -1,6 +1,7 @@
 # shell_menu
 
-自动化生成脚本目录，统一管理脚本
+> * 一键生成脚本菜单
+> * 统一管理系统安装维护脚本
 
 (以下链接由 [Vim_IDE](https://github.com/BillWang139967/Vim)自动生成)
 
@@ -15,9 +16,25 @@
 
 ## usage
 
-> * 将脚本放到 sh_menu/Funtion 目录中(注:如果放到 Funtion 中包含子目录，会以目录名作为一级菜单选项)
-> * sh main.sh -c 更新脚本目录文件
-> * sh main.sh 进行使用
+```
+(1)下载shell_menu
+#git clone https://github.com/BillWang139967/shell_menu.git
+#cd shell_menu
+
+(2)编写一个系统安装维护脚本放到脚本目录
+将脚本放到 sh_menu/Funtion 目录中(注:如果放到 Funtion 中包含子目录，会以目录名作为一级菜单选项)
+#cat >./sh_menu/Function/helloworld.sh <<-'EOF'  
+#!/bin/bash
+echo "helloworld"
+EOF
+
+(3)生成菜单文件
+#sh main.sh -c
+
+(4)开始使用
+#sh main.sh
+```
+
 
 ## 功能展示
 
