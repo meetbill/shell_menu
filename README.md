@@ -3,37 +3,36 @@
 > * 一键生成脚本菜单
 > * 统一管理系统安装维护脚本
 
-(以下链接由 [Vim_IDE](https://github.com/BillWang139967/Vim)自动生成)
-
-
+<!-- vim-markdown-toc GFM -->
 * [usage](#usage)
 * [功能展示及提示](#功能展示及提示)
-	* [生成菜单文件](#生成菜单文件)
-	* [开始使用](#开始使用)
-	* [小提示](#小提示)
+    * [生成菜单文件](#生成菜单文件)
+    * [开始使用](#开始使用)
+    * [小提示](#小提示)
 * [相关项目](#相关项目)
 * [版本发布](#版本发布)
 * [参加步骤](#参加步骤)
 * [小额捐款](#小额捐款)
 
+<!-- vim-markdown-toc -->
 ## usage
 
 ```
-(1)下载shell_menu
+(1) 下载 shell_menu
 #git clone https://github.com/BillWang139967/shell_menu.git
 #cd shell_menu
 
-(2)编写一个系统安装维护脚本放到脚本目录
-将脚本放到 sh_menu/Funtion 目录中(注:如果放到 Funtion 中包含子目录，会以目录名作为一级菜单选项)
-#cat >./sh_menu/Function/helloworld.sh <<-'EOF'  
+(2) 编写一个系统安装维护脚本放到脚本目录
+将脚本放到 sh_menu/Funtion 目录中（注：如果放到 Funtion 中包含子目录，会以目录名作为一级菜单选项）
+#cat >./sh_menu/Function/helloworld.sh <<-'EOF'
 #!/bin/bash
 echo "helloworld"
 EOF
 
-(3)生成菜单文件
+(3) 生成菜单文件
 #bash main.sh -c
 
-(4)开始使用
+(4) 开始使用
 #bash main.sh
 ```
 
@@ -49,7 +48,7 @@ EOF
 ![Screenshot](images/menu.jpg)
 
 * 上图输入 1 ，即执行 ww.sh 脚本
-* 上图输入 2 ，及进入 wang 目录,程序会判断是否在子目录，如果是在子目录，会自动加回退到上级目录选项
+* 上图输入 2 ，及进入 wang 目录，程序会判断是否在子目录，如果是在子目录，会自动加回退到上级目录选项
 * 本程序仅支持二级菜单
 * 如果输入中有字符输入错误，可以输入'Ctrl + Backspace' 进行删除操作
 
@@ -66,12 +65,13 @@ cd ${CUR_DIR}
 
 ## 相关项目
 
-python 终端菜单--[py_menu](https://github.com/BillWang139967/py_menu)
+python 终端菜单 --[py_menu](https://github.com/BillWang139967/py_menu)
 
-## 版本发布 
-----
-* v1.0.2，2016-10-21，更新: 支持自动生成二级菜单，目录结构调整
-* v1.0.1，2016-08-12，新增: 发布初始版本。
+## 版本发布
+
+* v1.0.3，2017-03-27，更新：修复多个二级子菜单时生成多个一级菜单情况
+* v1.0.2，2016-10-21，更新：支持自动生成二级菜单，目录结构调整
+* v1.0.1，2016-08-12，新增：发布初始版本。
 
 ## 参加步骤
 
@@ -99,7 +99,7 @@ $ git push -f origin master
 ```
 ## 小额捐款
 
-如果你觉得shell_menu对你有帮助, 可以对作者进行小额捐款(支付宝)
+如果你觉得 shell_menu 对你有帮助，可以对作者进行小额捐款（支付宝）
 
 ![Screenshot](images/5.jpg)
 

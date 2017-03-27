@@ -10,8 +10,8 @@
 #            M A I N             #
 #================================#
 
-VERSION=1.0.2
-TIME="2016-10-21"
+VERSION=1.0.3
+TIME="2017-03-27"
 TOOL_PATH=$(cd `dirname $0`; pwd)
 export TOOL_PATH
 cd  ${TOOL_PATH}
@@ -99,7 +99,11 @@ Create_file()
                 SUB_MENU_NAME=`echo ${FILE_PATH} | awk -F / '{print $1}'`
 
                 # 将目录名称写到一级菜单中
-                echo "${SUB_MENU_NAME}%${SUB_MENU_NAME}.menu" >> ${MENUFILE}
+                CHECK_MENU=`grep "${SUB_MENU_NAME}%${SUB_MENU_NAME}.menu" ${MENUFILE}|wc -l`
+                if [ "w${CHECK_MENU}" == "w0" ]
+                then
+                    echo "${SUB_MENU_NAME}%${SUB_MENU_NAME}.menu" >> ${MENUFILE}
+                fi
 
                 # 将 Function 二级目录下的脚本写到二级菜单中
                 echo "${FILE_NAME}%${FUNTION_DIR_S}/${FILE_PATH}" >> ${MENUPATH}/${SUB_MENU_NAME}.menu
