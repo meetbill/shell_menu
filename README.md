@@ -31,10 +31,10 @@ echo "helloworld"
 EOF
 
 (3)生成菜单文件
-#sh main.sh -c
+#bash main.sh -c
 
 (4)开始使用
-#sh main.sh
+#bash main.sh
 ```
 
 
