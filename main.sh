@@ -10,8 +10,8 @@
 #            M A I N             #
 #================================#
 
-VERSION=1.0.3
-TIME="2017-03-27"
+VERSION=1.0.4
+TIME="2017-04-04"
 TOOL_PATH=$(cd `dirname $0`; pwd)
 export TOOL_PATH
 cd  ${TOOL_PATH}
@@ -109,6 +109,14 @@ Create_file()
                 echo "${FILE_NAME}%${FUNTION_DIR_S}/${FILE_PATH}" >> ${MENUPATH}/${SUB_MENU_NAME}.menu
                 chmod +x ${FUNTION_DIR_S}/${FILE_PATH}
             fi
+        fi
+    done
+    find ${MENUPATH} -name "*.menu" | while read MENU_FILE
+    do
+        if [[ -n ${MENU_FILE} ]]
+        then
+            sort ${MENU_FILE} >> ${MENU_FILE}.new
+            mv ${MENU_FILE}.new ${MENU_FILE}
         fi
     done
     sh main.sh -t
