@@ -77,6 +77,7 @@ Create_file()
     else
         # 清理下菜单配置目录
         [[ ! -z ${MENUPATH} ]] && rm -rf ${MENUPATH}/*.menu
+        touch ${MENUFILE}
     fi
     find ${FUNTION_DIR} -name "*.sh" | while read SH_FILE
     do
