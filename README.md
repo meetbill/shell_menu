@@ -1,7 +1,10 @@
 # shell_menu
 
+shell_menu 是一个框架，更是一个[运维工具](https://github.com/BillWang139967/shell_menu/wiki)
+
 > * 一键生成脚本菜单
 > * 统一管理系统安装维护脚本
+> * 日常运维工具
 
 <!-- vim-markdown-toc GFM -->
 * [usage](#usage)
@@ -9,6 +12,7 @@
     * [生成菜单文件](#生成菜单文件)
     * [开始使用](#开始使用)
     * [小提示](#小提示)
+    * [日常运维工具](#日常运维工具)
 * [相关项目](#相关项目)
 * [版本发布](#版本发布)
 * [参加步骤](#参加步骤)
@@ -62,10 +66,13 @@ EOF
 CUR_DIR=$(cd `dirname $0`; pwd)
 cd ${CUR_DIR}
 ```
+### 日常运维工具
+
+[日常运维工具](https://github.com/BillWang139967/shell_menu/wiki)
 
 ## 相关项目
 
-python 终端菜单 --[py_menu](https://github.com/BillWang139967/py_menu)
+> * python 终端菜单 --[py_menu](https://github.com/BillWang139967/py_menu)
 
 ## 版本发布
 
