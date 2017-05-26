@@ -20,7 +20,7 @@ g_SSHD_CONFIG=/etc/ssh/sshd_config
 g_SUDO_CONFIG=/etc/sudoers
 
 
-function create_user()
+function create_sudouser()
 {
 	local g_USER_NAME=''
     local g_USER_PASSWD=''
@@ -34,19 +34,7 @@ function create_user()
     then
         echo "Error: Privilege grant failed!"
     fi
+    echo 'set over'
 }
 
-function ban_root()
-{
-    sed -i 's/^#PermitRootLogin.*$/PermitRootLogin no/g' $g_SSHD_CONFIG
-    sed -i 's/^PermitRootLogin.*$/PermitRootLogin no/g' $g_SSHD_CONFIG
-    /etc/init.d/sshd restart
-}
-
-function main()
-{
-    create_user
-    ban_root
-}
-
-main
+create_sudouser

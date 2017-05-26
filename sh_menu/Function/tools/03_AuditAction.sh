@@ -28,4 +28,4 @@ export HISTORY_FILE=/var/log/Command_history.log
 export PROMPT_COMMAND='{ date "+%y-%m-%d %T ##### $(who am i |awk "{print \$1\" \"\$2\" \"\$5}")  #### $(history 1 | { read x cmd; echo "$cmd"; })"; } >>${HISTORY_FILE}'
 EOF
 fi
-echo "done"
+echo "set over"
