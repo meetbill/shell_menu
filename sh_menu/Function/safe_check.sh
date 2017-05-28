@@ -69,9 +69,9 @@ function audit_action()
 {
     echo "Linux 操作审计检查中..."
 
-    HISTORY=`cat /etc/profile | grep HISTORY_FILE`
+    HISTORY=`cat /etc/profile | grep HISTORY_FILE | wc -l`
 
-    if [ ! $HISTORY ];then
+    if [[ $HISTORY == 0 ]];then
         echo "  [ X ] 系统没有添加操作审计，不符合要求，建议 [03_AuditAction.sh]" >> ${safe_check_log}
     else
         echo "  [ √ ] 系统已添加操作审计，符合要求" >> ${safe_check_log}
@@ -84,7 +84,7 @@ function deny_rootlogin()
 {
     echo "检查 Linux root 用户是否可以登录..."
 
-    rootlogin_check=`grep ^PermitRootLogin /etc/ssh/ssh_config| grep no| wc -l`
+    rootlogin_check=`grep ^PermitRootLogin /etc/ssh/sshd_config| grep no| wc -l`
 
     if [[  $rootlogin_check == 0 ]];then
         echo "  [ X ] root 用户可以登录此系统，不符合要求，建议 [01_DenyRootLogin.sh]" >> ${safe_check_log}
