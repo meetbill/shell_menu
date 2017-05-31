@@ -94,6 +94,19 @@ function deny_rootlogin()
     echo 'check over'
 }
 #}}}
+#{{{rm_trash
+function rm_trash()
+{
+    echo "检查 Linux rm 回收站命令..."
+
+    if [[ ! -f /bin/rmtrash.sh ]];then
+        echo "  [ X ] 此 linux 系统没有 rm 回收站功能, 不符合要求,建议 [06_rmtrash.sh]" >> ${safe_check_log}
+    else
+        echo "  [ √ ] 系统已开启 rm 回收站功能，符合要求" >> ${safe_check_log}
+    fi
+    echo 'check over'
+}
+#}}}
 
 ## 详细过滤脚本 待更新中...##
 safe_check_log=/tmp/safe_check.log
@@ -103,6 +116,7 @@ account_policy
 account_timeout
 audit_action
 deny_rootlogin
+rm_trash
 
 echo -e "\n"
 echo "--------------------------------------------------------------------------"
