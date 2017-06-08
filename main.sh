@@ -10,8 +10,8 @@
 #            M A I N             #
 #================================#
 
-VERSION=1.0.4
-TIME="2017-04-04"
+VERSION=1.0.5
+TIME="2017-06-09"
 TOOL_PATH=$(cd `dirname $0`; pwd)
 export TOOL_PATH
 cd  ${TOOL_PATH}
@@ -24,6 +24,7 @@ FUNTION_DIR_S=${TOOL_PATH}/${FUNTION_DIR}
 menu=0 # The first few menu
 tree=0 # The default does not display the menu tree
 verbose=0 # The default menu tree diagram does not display with the menu information
+
 
 
 #{{{Enter
@@ -120,8 +121,7 @@ Create_file()
             mv ${MENU_FILE}.new ${MENU_FILE}
         fi
     done
-    sh main.sh -t
-    echo "OK"
+    echo "update menu OK"
 }
 #}}}
 #{{{Tree
@@ -290,6 +290,22 @@ done
  
 }
 #}}}
+
+
+
+_file_marker=".shell_menu_configured"
+if [ ! -f "$_file_marker" ]; then
+    echo "#!/bin/bash" > $_file_marker
+    echo "TOOL_PATH_FLAG=$TOOL_PATH" >> $_file_marker
+    Create_file
+else
+    . ./$_file_marker
+    if [[ "w$TOOL_PATH" != "w$TOOL_PATH_FLAG" ]]
+    then
+        Create_file
+    fi
+fi
+
 while getopts vtcf:h OPTION
 do
         case $OPTION in
