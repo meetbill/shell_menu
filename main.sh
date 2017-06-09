@@ -323,7 +323,7 @@ do
                    ;;
                 c)
                    Create_file
-                   exit 0
+                   tree=1
                    ;;
                 h)
                    echo
