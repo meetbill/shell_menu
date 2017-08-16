@@ -1,6 +1,0 @@
-01_DenyRootLogin.sh%/root/github/shell_menu/sh_menu/Function/tools/01_DenyRootLogin.sh
-02_CreateUser.sh%/root/github/shell_menu/sh_menu/Function/tools/02_CreateUser.sh
-03_AuditAction.sh%/root/github/shell_menu/sh_menu/Function/tools/03_AuditAction.sh
-04_Change_sshdport.sh%/root/github/shell_menu/sh_menu/Function/tools/04_Change_sshdport.sh
-05_account_timeout.sh%/root/github/shell_menu/sh_menu/Function/tools/05_account_timeout.sh
-06_rmtrash.sh%/root/github/shell_menu/sh_menu/Function/tools/06_rmtrash.sh
