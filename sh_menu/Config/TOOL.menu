@@ -1,4 +1,4 @@
-develop%develop.menu
-safe_check.sh%/root/github/shell_menu/sh_menu/Function/safe_check.sh
+1_check_linux%1_check_linux.menu
+2_tools%2_tools.menu
+3_develop%3_develop.menu
 test%test.menu
-tools%tools.menu
