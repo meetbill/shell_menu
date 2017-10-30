@@ -1,45 +1,10 @@
-# shell_menu
+## shell_menu
 
-shell_menu 是一个框架，更是一个[运维工具](https://github.com/BillWang139967/shell_menu/wiki)
+shell_menu 是一个框架
 
-> * 一键生成脚本菜单
-> * 统一管理系统安装维护脚本
+> * 自动生成脚本菜单
+> * 统一管理脚本工具
 > * 日常运维工具
-
-<!-- vim-markdown-toc GFM -->
-* [usage](#usage)
-* [功能展示及提示](#功能展示及提示)
-    * [开始使用](#开始使用)
-    * [小提示](#小提示)
-    * [日常运维工具](#日常运维工具)
-* [相关项目](#相关项目)
-* [版本发布](#版本发布)
-* [参加步骤](#参加步骤)
-* [小额捐款](#小额捐款)
-
-<!-- vim-markdown-toc -->
-## usage
-
-```
-(1) 下载 shell_menu
-#git clone https://github.com/BillWang139967/shell_menu.git
-#cd shell_menu
-
-(2) 编写一个系统安装维护脚本放到脚本目录
-将脚本放到 sh_menu/Funtion 目录中（注：如果放到 Funtion 中包含子目录，会以目录名作为一级菜单选项）
-#cat >./sh_menu/Function/helloworld.sh <<-'EOF'
-#!/bin/bash
-echo "helloworld"
-EOF
-
-(3) 开始使用
-#bash main.sh
-```
-
-
-## 功能展示及提示
-
-### 开始使用
 
 ![Screenshot](images/menu.jpg)
 
@@ -49,29 +14,9 @@ EOF
 * 如果输入中有字符输入错误，可以输入'Ctrl + Backspace' 进行删除操作
 * 添加脚本后可以通过bash main.sh -c 手动更新菜单，以及 bash main.sh -t 查看菜单
 
-### 小提示
+## 使用手册
 
-编写系统脚本时经常会有这样一个问题，工作目录
-
-加入系统脚本需要以自己为工作目录时，可以在脚本的开头加上如下代码
-
-```
-CUR_DIR=$(cd `dirname $0`; pwd)
-cd ${CUR_DIR}
-```
-或者(下面方法支持软链接)
-```
-CUR_DIR=`S=\`readlink "$0"\`; [ -z "$S"  ] && S=$0; dirname $S`
-cd ${CUR_DIR}
-```
-
-### 日常运维工具
-
-[日常运维工具](https://github.com/BillWang139967/shell_menu/wiki)
-
-## 相关项目
-
-> * python 终端菜单 --[py_menu](https://github.com/BillWang139967/py_menu)
+[使用手册](https://github.com/BillWang139967/shell_menu/wiki)
 
 ## 版本发布
 
