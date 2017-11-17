@@ -22,7 +22,12 @@ function deny_rootlogin()
 {
     sed -i 's/^#PermitRootLogin.*$/PermitRootLogin no/g' $g_SSHD_CONFIG
     sed -i 's/^PermitRootLogin.*$/PermitRootLogin no/g' $g_SSHD_CONFIG
-    /etc/init.d/sshd restart
+    if [[ -e "/etc/init.d/sshd"  ]]
+    then
+        /etc/init.d/sshd restart
+    else
+        systemctl restart sshd
+    fi
     echo 'set over'
 }
 
