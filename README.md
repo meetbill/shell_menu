@@ -1,10 +1,12 @@
 ## shell_menu
 
-shell_menu 是一个框架
+Shell_menu 是一个框架
 
 > * 自动生成脚本菜单
 > * 统一管理脚本工具
 > * 日常运维工具
+>   * Pip 
+>   * Redis
 
 ![Screenshot](images/menu.jpg)
 
