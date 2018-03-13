@@ -1,6 +1,0 @@
-01_DenyRootLogin.sh%./sh_menu/Function/2_tools/01_DenyRootLogin.sh
-02_CreateUser.sh%./sh_menu/Function/2_tools/02_CreateUser.sh
-03_AuditAction.sh%./sh_menu/Function/2_tools/03_AuditAction.sh
-04_Change_sshdport.sh%./sh_menu/Function/2_tools/04_Change_sshdport.sh
-05_account_timeout.sh%./sh_menu/Function/2_tools/05_account_timeout.sh
-06_rmtrash.sh%./sh_menu/Function/2_tools/06_rmtrash.sh

@@ -27,5 +27,5 @@ do
     mkdir -p ${redis_dir}/redis_$n
     cp ${redis_dir}/redis.conf  ${redis_dir}/redis_$n/
     sed -i "s/6379/$n/g"  ${redis_dir}/redis_$n/redis.conf
-    ${redis_dir}/bin/redis-server ${redis_dir}/redis_$n/redis.conf
+    #${redis_dir}/bin/redis-server ${redis_dir}/redis_$n/redis.conf
 done

@@ -29,7 +29,7 @@ fi
 
 
 echo -e "\033[44;37m [redis_dir]\033[0m"
-redis_dir_port=$(ls -al ~/redis_meetbill/ | awk '/redis_/{print $9}' | tr -d "redis_" )
+redis_dir_port=$(ls -al ${redis_dir} | awk '/redis_/{print $9}' | tr -d "redis_" )
 echo ${redis_dir_port}
 
 echo -e "\033[44;37m [redis_started]\033[0m"

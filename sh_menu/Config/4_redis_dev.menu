@@ -1,6 +1,0 @@
-1_redis_rebuild.sh%./sh_menu/Function/4_redis_dev/1_redis_rebuild.sh
-2_redis_install.sh%./sh_menu/Function/4_redis_dev/2_redis_install.sh
-3_redis_check.sh%./sh_menu/Function/4_redis_dev/3_redis_check.sh
-4_redis_start.sh%./sh_menu/Function/4_redis_dev/4_redis_start.sh
-5_redis_stop.sh%./sh_menu/Function/4_redis_dev/5_redis_stop.sh
-6_redis_uninstall.sh%./sh_menu/Function/4_redis_dev/6_redis_uninstall.sh
