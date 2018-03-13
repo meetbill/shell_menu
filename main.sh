@@ -10,7 +10,7 @@
 #            M A I N             #
 #================================#
 
-VERSION=1.0.7
+VERSION=1.0.8
 TIME="2018-03-13"
 TOOL_PATH=`S=$(readlink "$0"); [ -z "$S"  ] && S=$0; cd $(dirname $S);pwd`
 # echo ${TOOL_PATH}
@@ -118,6 +118,12 @@ Create_file()
                     if [[ ! -f "${MENUPATH}/${SUB_MENU_NAME}.menu" ]]
                     then
                         touch ${MENUPATH}/${SUB_MENU_NAME}.menu
+                    fi
+                    # 将目录名称写到一级菜单中
+                    CHECK_MENU=`grep "${SUB_MENU_NAME}%${SUB_MENU_NAME}.menu" ${MENUFILE}|wc -l`
+                    if [ "w${CHECK_MENU}" == "w0" ]
+                    then
+                        echo "${SUB_MENU_NAME}%${SUB_MENU_NAME}.menu" >> ${MENUFILE}
                     fi
 
                     # 将目录名称写到2级菜单中
