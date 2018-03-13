@@ -10,10 +10,10 @@
 #            M A I N             #
 #================================#
 
-VERSION=1.0.6
-TIME="2017-09-16"
-TOOL_PATH=`S=\`readlink "$0"\`; [ -z "$S"  ] && S=$0; dirname $S`
-#TOOL_PATH=$(cd `dirname $0`; pwd)
+VERSION=1.0.7
+TIME="2018-03-13"
+TOOL_PATH=`S=$(readlink "$0"); [ -z "$S"  ] && S=$0; cd $(dirname $S);pwd`
+# echo ${TOOL_PATH}
 export TOOL_PATH
 cd  ${TOOL_PATH}
 MENUPATH=${TOOL_PATH}/sh_menu/Config            # The default menu file path
@@ -21,6 +21,7 @@ MENUTYPE=menu                           # Menu file name suffix
 MENUFILE=$MENUPATH/TOOL.$MENUTYPE       # The default menu file
 MENUCHAR=%                              # The default menu file separator
 FUNTION_DIR=sh_menu/Function
+#FUNTION_DIR=sh_menu/Testfunc
 FUNTION_DIR_S=${TOOL_PATH}/${FUNTION_DIR}
 menu=0 # The first few menu
 tree=0 # The default does not display the menu tree
@@ -83,13 +84,12 @@ Create_file()
     fi
     find ${FUNTION_DIR} -name "*.sh" | while read SH_FILE
     do
-        # 17为sh_menu/Function长度
+        # 16为sh_menu/Function长度
         if [[ -n ${SH_FILE} ]]
         then
-            #echo ${SH_FILE:17}
             FILE_PATH=`echo ${SH_FILE:17}`
             FILE_NAME=`basename "${FILE_PATH}"`
-            #echo ${FILE_NAME}
+            # echo "[FILE_PATH]:${FILE_PATH} [FILE_NAME]:${FILE_NAME}"
             if [[ "w${FILE_NAME}" == "w${FILE_PATH}"  ]]
             then
                 # 表示为一级菜单脚本
@@ -100,17 +100,37 @@ Create_file()
                 # 需要生成二级菜单
                 # Function 目录下的目录名作为打开二级菜单的名称
                 SUB_MENU_NAME=`echo ${FILE_PATH} | awk -F / '{print $1}'`
-
-                # 将目录名称写到一级菜单中
-                CHECK_MENU=`grep "${SUB_MENU_NAME}%${SUB_MENU_NAME}.menu" ${MENUFILE}|wc -l`
-                if [ "w${CHECK_MENU}" == "w0" ]
+                
+                THREE_MENU_NAME=`echo ${FILE_PATH} | awk -F / '{print $2}'`
+                if [[ -f "${FUNTION_DIR_S}/${SUB_MENU_NAME}/${THREE_MENU_NAME}" ]]
                 then
-                    echo "${SUB_MENU_NAME}%${SUB_MENU_NAME}.menu" >> ${MENUFILE}
-                fi
+                    # 将目录名称写到一级菜单中
+                    CHECK_MENU=`grep "${SUB_MENU_NAME}%${SUB_MENU_NAME}.menu" ${MENUFILE}|wc -l`
+                    if [ "w${CHECK_MENU}" == "w0" ]
+                    then
+                        echo "${SUB_MENU_NAME}%${SUB_MENU_NAME}.menu" >> ${MENUFILE}
+                    fi
 
-                # 将 Function 二级目录下的脚本写到二级菜单中
-                echo "${FILE_NAME}%${FUNTION_DIR_S}/${FILE_PATH}" >> ${MENUPATH}/${SUB_MENU_NAME}.menu
-                chmod +x ${FUNTION_DIR_S}/${FILE_PATH}
+                    # 将 Function 二级目录下的脚本写到二级菜单中
+                    echo "${FILE_NAME}%${FUNTION_DIR_S}/${FILE_PATH}" >> ${MENUPATH}/${SUB_MENU_NAME}.menu
+                    chmod +x ${FUNTION_DIR_S}/${FILE_PATH}
+                else
+                    if [[ ! -f "${MENUPATH}/${SUB_MENU_NAME}.menu" ]]
+                    then
+                        touch ${MENUPATH}/${SUB_MENU_NAME}.menu
+                    fi
+
+                    # 将目录名称写到2级菜单中
+                    CHECK_MENU=`grep "${THREE_MENU_NAME}%${THREE_MENU_NAME}.menu" ${MENUPATH}/${SUB_MENU_NAME}.menu |wc -l`
+                    if [ "w${CHECK_MENU}" == "w0" ]
+                    then
+                        echo "${THREE_MENU_NAME}%${THREE_MENU_NAME}.menu" >> ${MENUPATH}/${SUB_MENU_NAME}.menu
+                    fi
+
+                    # 将 Function 3级目录下的脚本写到3级菜单中
+                    echo "${FILE_NAME}%${FUNTION_DIR_S}/${FILE_PATH}" >> ${MENUPATH}/${THREE_MENU_NAME}.menu
+                    chmod +x ${FUNTION_DIR_S}/${FILE_PATH}
+                fi
             fi
         fi
     done
@@ -265,21 +285,23 @@ Menu()
         esac
 
     done
- 
 }
 #}}}
 
 
 
 _file_marker=".shell_menu_configured"
-if [ ! -f "$_file_marker" ]; then
+if [[ ! -f "$_file_marker" ]]; then
     echo "#!/bin/bash" > $_file_marker
     echo "TOOL_PATH_FLAG=$TOOL_PATH" >> $_file_marker
     Create_file
 else
-    . ./$_file_marker
+    source ./$_file_marker
+    echo ${TOOL_PATH_FLAG}
     if [[ "w$TOOL_PATH" != "w$TOOL_PATH_FLAG" ]]
     then
+        echo "#!/bin/bash" > $_file_marker
+        echo "TOOL_PATH_FLAG=$TOOL_PATH" >> $_file_marker
         Create_file
     fi
 fi
