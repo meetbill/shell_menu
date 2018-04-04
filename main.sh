@@ -28,7 +28,32 @@ tree=0 # The default does not display the menu tree
 verbose=0 # The default menu tree diagram does not display with the menu information
 
 
+#{{{scripts_generic_identifyOs
+function scripts_generic_identifyOs(){
 
+    ## determine OS of computer
+
+    os=$(uname -a)
+    if [[ ${os} == *"Darwin"* ]]; then
+      os="Mac"
+      return 0
+    elif [[ ${os} == *"Ubuntu"* ]]; then
+      os="Ubuntu"
+    fi
+
+    if [[ -e "/etc/system-release-cpe" ]]
+    then
+        if [[ "$(cat /etc/system-release-cpe)" == *"centos"* ]]; then
+            os="Centos"
+        elif [[ "$(cat /etc/system-release-cpe)" == *"redhat"* ]]; then
+            os="Redhat"
+        fi
+    else
+        os="Unrecognised"
+    fi
+    return 0
+}
+#}}}
 #{{{Enter
 Enter()
 {
@@ -296,6 +321,12 @@ Menu()
 
 
 
+scripts_generic_identifyOs
+if [[ "w${os}" == "wMac"  ]]
+then
+    echo "Shell_menu does not support Mac systems"
+    exit 0
+fi
 _file_marker=".shell_menu_configured"
 if [[ ! -f "$_file_marker" ]]; then
     echo "#!/bin/bash" > $_file_marker
