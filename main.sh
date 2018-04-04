@@ -27,6 +27,11 @@ menu=0 # The first few menu
 tree=0 # The default does not display the menu tree
 verbose=0 # The default menu tree diagram does not display with the menu information
 
+if [[ ! -d ${MENUPATH} ]]
+then
+    mkdir -p ${MENUPATH}
+fi
+
 
 #{{{scripts_generic_identifyOs
 function scripts_generic_identifyOs(){
