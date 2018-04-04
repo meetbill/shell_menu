@@ -1,10 +1,10 @@
 ## shell_menu
-
-Shell_menu 是一个框架,也是一个工具箱
-
+ 
 [![GitHub stars](https://img.shields.io/github/stars/meetbill/shell_menu.svg?style=social&label=Star)](https://github.com/meetbill/shell_menu/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/meetbill/shell_menu.svg?style=social&label=Fork)](https://github.com/meetbill/shell_menu/fork)
 [![GitHub watchers](https://img.shields.io/github/watchers/meetbill/shell_menu.svg?style=social&label=Watch)](https://github.com/meetbill/shell_menu/watchers)
+
+Shell_menu 是一个框架,也是一个工具箱
 
 > * 自动生成脚本菜单
 > * 统一管理脚本工具
