@@ -11,6 +11,7 @@ Shell_menu 是一个框架,也是一个工具箱
 > * 日常运维工具
 >   * Pip
 >   * Redis
+>   * Tcpcopy
 
 ![Screenshot](images/menu.jpg)
 
